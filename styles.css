@@ -26,7 +26,7 @@ main {
     padding: 50px 70px;
 }
 
-.task-input {
+.add-task-form {
     margin-left: 18px;
     margin-bottom: 20px;
     width: 450px;
@@ -98,7 +98,7 @@ input[type="text"]::placeholder {
     background-color: transparent;
 }
 
-.btn-column {
+.title {
     margin-bottom: 10px;
     padding: 10px 20px;
     font-size: 18px;
@@ -114,6 +114,9 @@ input[type="text"]::placeholder {
     gap: 10px;
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 .task-card {
@@ -124,7 +127,7 @@ input[type="text"]::placeholder {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.backlog .btn-column {
+.backlog .title-backlog {
     color: #6f7a8a;
     background-color: #e3e2e3;
 }
@@ -133,7 +136,7 @@ input[type="text"]::placeholder {
     border-left-color: #e3e2e3;
 }
 
-.in-progress .btn-column {
+.in-progress .title-progress {
     color: #4286d3;
     background-color: #c1dbf7;
 }
@@ -142,7 +145,7 @@ input[type="text"]::placeholder {
     border-left-color: #c1dbf7;
 }
 
-.done .btn-column {
+.done .title-done {
     color: #60b879;
     background-color: #c7f9d3;
 }
@@ -151,7 +154,7 @@ input[type="text"]::placeholder {
     border-left-color: #c7f9d3;
 }
 
-.trash .btn-column {
+.trash .title-trash {
     color: #c55050;
     background-color: #fbe3e3;
 }

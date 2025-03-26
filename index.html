@@ -7,61 +7,64 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="board-app">
     <header>
         <h1>Список задач</h1>
     </header>
     <main>
-        <div class="task-input">
-            <label for="new-task" class="input-label">Новая задача</label>
-            <div class="input-group">
-                <input type="text" id="new-task" placeholder="Название задачи...">
-                <button type="button" class="btn btn-primary btn-lg btn-add">
-                    <svg class="plus-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 4V16M4 10H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    Добавить
-                </button>
-            </div>
-        </div>
+        <section class="add-task">
+            <form class="add-task-form">
+                <h3 for="new-task" class="input-label">Новая задача</h3> 
+                <div class="input-group">
+                    <input type="text" id="new-task" placeholder="Название задачи...">
+                    <button type="button" class="btn btn-primary btn-lg btn-add">
+                        <svg class="plus-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 4V16M4 10H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Добавить
+                    </button>
+                </div>
+            </form>
+        </section>
 
-        <section class="tasks-wrapper">
+        <section class="taskboard">
             <div class="task-columns">
                 <div class="task-section backlog">
-                    <button type="button" class="btn btn-column">Бэклог</button>
-                    <div class="tasks-list">
-                        <div class="task-card">Выучить JS</div>
-                        <div class="task-card">Выучить React</div>
-                        <div class="task-card">Сделать домашку</div>
-                    </div>
+                    <ul class="tasks-list">
+                        <span class="title title-backlog">Бэклог</span>
+                        <li class="task-card">Выучить JS</li>
+                        <li class="task-card">Выучить React</li>
+                        <li class="task-card">Сделать домашку</li>
+                    </ul>
                 </div>
 
                 <div class="task-section in-progress">
-                    <button type="button" class="btn btn-column">В процессе</button>
-                    <div class="tasks-list">
-                        <div class="task-card">Выпить смузи</div>
-                        <div class="task-card">Попить воды</div>
-                    </div>
+                    <ul class="tasks-list">
+                        <span class="title title-progress">В процессе</span>
+                        <li class="task-card">Выпить смузи</li>
+                        <li class="task-card">Попить воды</li>
+                    </ul>
                 </div>
 
                 <div class="task-section done">
-                    <button type="button" class="btn btn-column">Готово</button>
-                    <div class="tasks-list">
-                        <div class="task-card">Позвонить маме</div>
-                        <div class="task-card">Погладить кота</div>
-                    </div>
+                    <ul class="tasks-list">
+                        <span class="title title-done">Готово</span>
+                        <li class="task-card">Позвонить маме</li>
+                        <li class="task-card">Погладить кота</li>
+                    </ul>
                 </div>
 
                 <div class="task-section trash">
-                    <button type="button" class="btn btn-column">Корзина</button>
-                    <div class="tasks-list">
-                        <div class="task-card">Сходить погулять</div>
-                        <div class="task-card">Прочитать Войну и Мир</div>
-                        <button type="button" class="btn btn-primary btn-lg btn-clear">&#x2715 Очистить</button>
-                    </div>
+                    <ul class="tasks-list">
+                        <span class="title title-trash">Корзина</span>
+                        <li class="task-card">Сходить погулять</li>
+                        <li class="task-card">Прочитать Войну и Мир</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary btn-lg btn-clear">&#x2715 Очистить</button>
                 </div>
             </div>
         </section>
     </main>
+    <script src="src/main.js" type="module"></script>
 </body>
 </html>
