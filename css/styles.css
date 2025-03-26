@@ -59,6 +59,9 @@ main {
     gap: 15px;
     display: flex;
     align-items: center;
+    justify-content: space-between; 
+    flex-wrap: nowrap;
+    /* width: 200px; */
 }
 
 input[type="text"] {
@@ -68,6 +71,11 @@ input[type="text"] {
     padding: 10px 20px;
     font-size: 1rem;
     flex: 1;
+    width: 200px; /* Фиксированная базовая ширина */
+    flex-grow: 1; /* Может растягиваться при наличии места */
+    flex-shrink: 1; /* Может сжиматься при нехватке места */
+    min-width: 120px; /* Ниже не сожмётся */
+    max-width: 400px;
 }
 
 input[type="text"]::placeholder {
