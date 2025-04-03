@@ -1,6 +1,7 @@
 import TasksListComponent from '../view/tasks-list-component.js';
 import TaskComponent from '../view/task-component.js';
 import TaskSectionComponent from '../view/task-board-component.js';
+import ClearBtnComponent from '../view/clear-btn-component.js';
 import {render} from '../framework/render.js';
 import { Status } from '../const.js';
 
@@ -35,5 +36,11 @@ export default class TaskBoardPresenter {
                 render(taskComponent, listComponent.getElement().querySelector('.tasks-list'));
             });
         });
+
+        const clearBtnContainer = document.querySelector('.task-list-section-trash');
+
+        if (clearBtnContainer) {
+            render(new ClearBtnComponent(), clearBtnContainer);
+        }
     }
 }

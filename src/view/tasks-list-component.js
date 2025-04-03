@@ -5,11 +5,10 @@ function createTasksListComponentTemplate(status) {
     const statusLabel = StatusLabel[status];
 
     return (
-        `<section class="task-list-section">
+        `<section class="task-list-section task-list-section-${status}">
         <ul class="tasks-list ${status}">
             <span class="title title--${status}">${statusLabel}</span>
         </ul>
-        ${status === Status.TRASH ? '<button type="button" class="btn btn-primary btn-lg btn-clear">&#x2715 Очистить</button>' : ''}
         </section>`
     );
 }
