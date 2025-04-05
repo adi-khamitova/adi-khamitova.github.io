@@ -26,16 +26,15 @@ export default class TaskBoardPresenter {
         render(this.#taskBoardComponent, this.#boardContainer);
       
         Object.values(Status).forEach(status => {
-          const listComponent = new TasksListComponent({status});
-          render(listComponent, this.#taskBoardComponent.getElement());
-          
-          this.#boardTasks
-            .filter(task => task.status === status)
-            .forEach(task => {
-              render(new TaskComponent({task}), listComponent.getElement().querySelector('.tasks-list'));
-            });
+            const listComponent = new TasksListComponent({status});
+            render(listComponent, this.#taskBoardComponent.getElement());
+            
+            this.#taskModel.getTasksByStatus(status)
+                .forEach(task => {
+                    render(new TaskComponent({task}), listComponent.getElement().querySelector('.tasks-list'));
+                });
         });
-      
+
         const clearBtnContainer = document.querySelector('.task-list-section-trash');
 
         if (clearBtnContainer) {

@@ -6,5 +6,9 @@ export default class TaskModel {
     getTasks() {
         return this.#boardtasks;
     }
+
+    getTasksByStatus(status) {
+        return this.#boardtasks.filter(task => task.status === status);
+    }
 }
 
