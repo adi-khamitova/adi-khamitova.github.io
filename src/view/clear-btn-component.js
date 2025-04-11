@@ -1,4 +1,5 @@
 import { createElement } from "../framework/render.js";
+import { AbstractComponent } from "../framework/view/abstract-component.js";
 
 function createClearBtnComponentTemplate() {
     return (
@@ -6,20 +7,26 @@ function createClearBtnComponentTemplate() {
     );
 }
 
-export default class ClearBtnComponent {
-    getTemplate() {
+export default class ClearBtnComponent extends AbstractComponent {
+
+    constructor(status) {
+        super();
+        this.status = status;
+    }
+
+    get template() {
         return createClearBtnComponentTemplate();
     }
 
-    getElement() {
-        if (!this.element) {
-            this.element = createElement(this.getTemplate());
-        }
+    // getElement() {
+    //     if (!this.element) {
+    //         this.element = createElement(this.getTemplate());
+    //     }
 
-        return this.element;
-    }
+    //     return this.element;
+    // }
 
-    removeElement() {
-        this.element = null;
-    }
+    // removeElement() {
+    //     this.element = null;
+    // }
 }

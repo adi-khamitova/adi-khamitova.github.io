@@ -1,4 +1,5 @@
 import { createElement } from "../framework/render.js";
+import { AbstractComponent } from "../framework/view/abstract-component.js";
 
 function createTaskSectionComponentTemplate() {
     return (
@@ -6,20 +7,20 @@ function createTaskSectionComponentTemplate() {
     );
 }
 
-export default class TaskSectionComponent {
-    getTemplate() {
+export default class TaskSectionComponent extends AbstractComponent {
+    get template() {
         return createTaskSectionComponentTemplate();
     }
 
-    getElement() {
-        if (!this.element) {
-            this.element = createElement(this.getTemplate());
-        }
+    // getElement() {
+    //     if (!this.element) {
+    //         this.element = createElement(this.getTemplate());
+    //     }
 
-        return this.element;
-    }
+    //     return this.element;
+    // }
 
-    removeElement() {
-        this.element = null;
-    }
+    // removeElement() {
+    //     this.element = null;
+    // }
 }

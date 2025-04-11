@@ -218,6 +218,18 @@ input[type="text"]::placeholder {
     border-left-color: #ffc8b6;
 }
 
+.task--empty {
+    border-left: none;
+    box-shadow: none;
+    background-color: transparent;
+    border: 1px dashed #929292;
+}
+
+.task--empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 .btn-clear {
     margin-top: 10px;
     padding: 10px;
