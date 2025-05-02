@@ -251,3 +251,9 @@ input[type="text"]::placeholder {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.btn-clear:disabled {
+    background-color: #c5c5c5 !important;
+    color: #929292;
+    pointer-events: none;
+  }

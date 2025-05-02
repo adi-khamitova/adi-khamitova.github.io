@@ -8,25 +8,29 @@ function createClearBtnComponentTemplate() {
 }
 
 export default class ClearBtnComponent extends AbstractComponent {
+    #handleClick = null;
 
-    constructor(status) {
+    constructor(status, {onClick}) {
         super();
         this.status = status;
+        this.#handleClick = onClick;
+        this.element.addEventListener("click", this.#clickHandler);
     }
 
     get template() {
         return createClearBtnComponentTemplate();
     }
 
-    // getElement() {
-    //     if (!this.element) {
-    //         this.element = createElement(this.getTemplate());
-    //     }
+    toggleDisabled(isDisabled) {
+        const button = this.element.querySelector('.btn-clear');
+        if (button) {
+          button.disabled = isDisabled;
+        }
+        console.log(isDisabled);
+    }
 
-    //     return this.element;
-    // }
-
-    // removeElement() {
-    //     this.element = null;
-    // }
+    #clickHandler = (evt) => {
+        evt.preventDefault();
+        this.#handleClick();
+    }
 }
