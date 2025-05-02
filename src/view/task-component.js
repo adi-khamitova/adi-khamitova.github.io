@@ -11,21 +11,28 @@ export default class TaskComponent extends AbstractComponent {
     constructor({task}) {
         super();
         this.task = task;
+        this.#afterCreateElement();
     }
 
     get template() {
         return createTaskComponentTemplate(this.task);
     }
 
-    // getElement() {
-    //     if (!this.element) {
-    //         this.element = createElement(this.getTemplate());
-    //     }
+    #afterCreateElement() {
+        this.#makeTaskDraggable();
+    }
 
-    //     return this.element;
-    // }
+    #makeTaskDraggable() {
+        this.element.setAttribute('draggable', 'true');
+        this.element.dataset.taskId = this.task.id; // Добавляем ID в dataset
+        
+        this.element.addEventListener('dragstart', (event) => {
+            event.dataTransfer.setData('text/plain', this.task.id);
+            this.element.classList.add('dragging');
+        });
 
-    // removeElement() {
-    //     this.element = null;
-    // }
+        this.element.addEventListener('dragend', () => {
+            this.element.classList.remove('dragging');
+        });
+    }
 }

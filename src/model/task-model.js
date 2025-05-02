@@ -46,8 +46,27 @@ export default class TaskModel {
 
     isTrashEmpty() {
         console.log("mfo");
-        // return !this.#boardtasks.some(task => task.status === "trash");
-        return this.#trashEmpty;
+        return !this.#boardtasks.some(task => task.status === "trash");
+        // return this.#trashEmpty;
+    }
+
+    updateTaskStatus(taskId, newStatus, targetTaskId, insertPosition) {
+        const taskIndex = this.#boardtasks.findIndex(t => t.id === taskId);
+        if (taskIndex === -1) return;
+
+        const task = this.#boardtasks[taskIndex];
+        this.#boardtasks.splice(taskIndex, 1);
+    
+        if (targetTaskId) {
+            const targetIndex = this.#boardtasks.findIndex(t => t.id === targetTaskId);
+            if (targetIndex !== -1) {
+                const insertIndex = insertPosition === 'before' ? targetIndex : targetIndex + 1;
+                this.#boardtasks.splice(insertIndex, 0, { ...task, status: newStatus });
+            }
+        } else {
+            this.#boardtasks.push({ ...task, status: newStatus });
+        }
+    
+        this._notifyObservers();
     }
 }
-

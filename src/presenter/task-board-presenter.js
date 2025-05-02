@@ -34,7 +34,8 @@ export default class TaskBoardPresenter {
 
     updateClearBtnState() {
         if (this.#clearBtn) {
-            this.#clearBtn.toggleDisabled(this.#taskModel.isTrashEmpty());
+            const isTrashEmpty = this.#taskModel.isTrashEmpty();
+            this.#clearBtn.toggleDisabled(isTrashEmpty);
         }
     }
 
@@ -58,7 +59,7 @@ export default class TaskBoardPresenter {
     }
 
     #renderTasksList(status) {
-        const listComponent = new TasksListComponent({status});
+        const listComponent = new TasksListComponent({status: status, onTaskDrop: this.#handleTaskDrop.bind(this)});
         render(listComponent, this.#taskBoardComponent.element);
 
         const taskListElement = listComponent.element.querySelector('.tasks-list');
@@ -75,9 +76,15 @@ export default class TaskBoardPresenter {
         }
     }
 
+    #handleTaskDrop(taskId, newStatus, targetTaskId, insertPosition) {
+        this.#taskModel.updateTaskStatus(taskId, newStatus, targetTaskId, insertPosition);
+    }
+
     #renderClearBtn() {
         const clearBtnContainer = document.querySelector('.task-list-section-trash');
-        this.#clearBtn = new ClearBtnComponent(Status.TRASH, {onClick: this.#handleClearBtnClick});
+        const isTrashEmpty = this.#taskModel.isTrashEmpty();
+
+        this.#clearBtn = new ClearBtnComponent(Status.TRASH, {onClick: this.#handleClearBtnClick, isDisabled: isTrashEmpty});
         render(this.#clearBtn, clearBtnContainer);
         this.updateClearBtnState();
     }
