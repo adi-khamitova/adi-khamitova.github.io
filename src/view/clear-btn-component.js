@@ -28,7 +28,6 @@ export default class ClearBtnComponent extends AbstractComponent {
         if (button) {
           button.disabled = isDisabled;
         }
-        console.log(isDisabled);
     }
 
     #clickHandler = (evt) => {
